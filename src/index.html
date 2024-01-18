@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+  </head>
+
+  <body class="page">
+    <header class="header">
+      <div class="header__logo"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img
+          class="profile__avatar"
+          src="<%=require('./images/profile-avatar.png')%>"
+          alt="фото профиля"
+        />
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button
+            class="profile__edit-button"
+            type="button"
+            aria-label="редактировать профиль"
+          ></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button
+          class="profile__add-button"
+          type="button"
+          aria-label="добавить"
+        ></button>
+      </section>
+      <section class="cards"></section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2023 Mesto Russia</p>
+    </footer>
+    <div class="popup popup_type_edit-profile">
+      <div class="popup__container">
+        <button
+          class="popup__close-button"
+          type="button"
+          aria-label="закрыть форму"
+        ></button>
+        <h2 class="popup__form-heading">Редактировать профиль</h2>
+        <form class="popup__form-imput-container" name="change-profile">
+          <input
+            name="name"
+            type="text"
+            value="Жак-Ив Кусто"
+            class="popup__form-item popup__form-item_el_name"
+          />
+          <input
+            name="job"
+            type="text"
+            value="Исследователь океана"
+            class="popup__form-item popup__form-item_el_job"
+          />
+          <button
+            class="popup__form-save-button"
+            type="submit"
+            aria-label="сохранить изменения профиля"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_add-card">
+      <div class="popup__container">
+        <button
+          class="popup__close-button"
+          type="button"
+          aria-label="закрыть форму"
+        ></button>
+        <h2 class="popup__form-heading">Новое место</h2>
+        <form
+          class="popup__form-imput-container popup__form-imput-container_type_add-card"
+          name="add-new-card"
+        >
+          <input
+            name="place"
+            type="text"
+            placeholder="Название"
+            class="popup__form-item popup__form-item_el_place"
+          />
+          <input
+            name="link"
+            type="text"
+            placeholder="Ссылка на картинку"
+            class="popup__form-item popup__form-item_el_link"
+          />
+          <button
+            class="popup__form-save-button"
+            type="submit"
+            aria-label="создать карточку с фото"
+          >
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_photo-closeup">
+      <div class="popup__closeup-container">
+        <button
+          class="popup__close-button"
+          type="button"
+          aria-label="закрыть форму"
+        ></button>
+        <img class="popup__closeup-photo" alt="фото" />
+        <h2 class="popup__closeup-location"></h2>
+      </div>
+    </div>
+    <template id="cards">
+      <div class="cards__item">
+        <button
+          class="cards__delete-button"
+          type="button"
+          aria-label="удалить карточку"
+        ></button>
+        <button
+          class="cards__closeup-button"
+          type="button"
+          aria-label="открыть попап с фото"
+        >
+          <img class="cards__photo" alt="фото" />
+        </button>
+        <div class="cards__info">
+          <h2 class="cards__location-name"></h2>
+          <button
+            class="cards__like-button"
+            type="button"
+            aria-label="поставить лайк"
+          ></button>
+        </div>
+      </div>
+    </template>
+  </body>
+</html>
