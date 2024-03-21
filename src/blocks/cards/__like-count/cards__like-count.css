@@ -1,0 +1,8 @@
+.cards__like-count {
+  display: flex;
+  align-self: center;
+  font-size: 13px;
+  font-family: "Inter";
+  font-weight: 400;
+  color: #000;
+}

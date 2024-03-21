@@ -15,7 +15,9 @@
 @import url(../blocks/cards/__photo/cards__photo.css);
 @import url(../blocks/cards/__info/cards__info.css);
 @import url(../blocks/cards/__location-name/cards__location-name.css);
+@import url(../blocks/cards/__like-info/cards__like-info.css);
 @import url(../blocks/cards/__like-button/cards__like-button.css);
+@import url(../blocks/cards/__like-count/cards__like-count.css);
 @import url(../blocks/cards/__like-button/_active/cards__like-button_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
@@ -25,9 +27,13 @@
 @import url(../blocks/popup/__form-heading/popup__form-heading.css);
 @import url(../blocks/popup/__form-imput-container/popup__form-imput-container.css);
 @import url(../blocks/popup/__form-item/popup__form-item.css);
+@import url(../blocks/popup/__form-item/_invalid/popup__form-item_invalid.css);
+@import url(../blocks/popup/__form-error-message/_active/popup__form-error-message_active.css);
 @import url(../blocks/popup/__form-save-button/popup__form-save-button.css);
+@import url(../blocks/popup/__form-save-button/_disabled/popup__form-save-button_disabled.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/cards/___delete-button/cards__delete-button.css);
+@import url(../blocks/cards/___delete-button/cards__delete-button-hide.css);
 @import url(../blocks/cards/__closeup-button/cards__closeup-button.css);
 @import url(../blocks/popup/__closeup-container/popup__closeup-container.css);
 @import url(../blocks/popup/__closeup-photo/popup__closeup-photo.css);
