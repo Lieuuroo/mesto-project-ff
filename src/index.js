@@ -89,8 +89,6 @@ function addCard(cardInfo, profileId) {
   );
 
   cardsDisplay.prepend(newCard);
-
-  return newCard;
 }
 
 Promise.all([currentUserData(), getInitialCards()])
@@ -113,15 +111,16 @@ Promise.all([currentUserData(), getInitialCards()])
 popupAddCardCloseButton.addEventListener("click", () =>
   closePopup(popupAddCard)
 );
-popupAddCard.addEventListener("submit", () => closePopup(popupAddCard));
+
 buttonAddCard.addEventListener("click", () => {
   openPopup(popupAddCard);
   popupAddCardForm.reset();
+  clearValidation(popupAddCardForm, validationConfig);
 });
 popupEditProfileCloseButton.addEventListener("click", () =>
   closePopup(popupEditProfile)
 );
-popupEditProfile.addEventListener("submit", () => closePopup(popupEditProfile));
+
 buttonEditProfile.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileSubtitle.textContent;
@@ -132,8 +131,13 @@ buttonEditProfile.addEventListener("click", () => {
 popupEditAvatarCloseButton.addEventListener("click", () =>
   closePopup(popupEditAvatar)
 );
-popupEditAvatar.addEventListener("submit", () => closePopup(popupEditAvatar));
-avatarPhoto.addEventListener("click", () => openPopup(popupEditAvatar));
+
+avatarPhoto.addEventListener("click", () => {
+  openPopup(popupEditAvatar);
+  popupEditAvatarForm.reset();
+  clearValidation(popupEditAvatarForm, validationConfig);
+});
+
 
 const openImagePopup = (cardInfo) => {
   photoCloseupLink.src = cardInfo.link;
@@ -154,6 +158,7 @@ function editAvatar(evt) {
   updateAvatar(avatarLink.value)
     .then((res) => {
       avatarStyle.backgroundImage = `url('${res.avatar}')`;
+      closePopup(popupEditAvatar);
     })
     .finally(() => {
       popupEditAvatarSaveButton.textContent = "Cохранить";
@@ -161,7 +166,6 @@ function editAvatar(evt) {
     .catch((err) => {
       console.log(err);
     });
-  popupEditAvatarForm.reset();
 }
 
 popupEditAvatarForm.addEventListener("submit", editAvatar);
@@ -175,6 +179,7 @@ function editProfile(evt) {
     .then(() => {
       profileName.textContent = nameInput.value;
       profileSubtitle.textContent = jobInput.value;
+      closePopup(popupEditProfile);
     })
     .finally(() => {
       popupEditProfileSaveButton.textContent = "Cохранить";
@@ -194,7 +199,7 @@ function handleAddSubmit(evt) {
   addNewCard(placeInput.value, linkInput.value)
     .then((card) => {
       addCard(card, profileId);
-      popupAddCardForm.reset();
+      closePopup(popupAddCard);
     })
     .finally(() => {
       popupAddCardSaveButton.textContent = "Cохранить";
@@ -204,8 +209,6 @@ function handleAddSubmit(evt) {
     });
 }
 
-popupAddCardForm.addEventListener("submit", handleAddSubmit, () => {
-  clearValidation(popupAddCardForm, validationConfig);
-});
+popupAddCardForm.addEventListener("submit", handleAddSubmit);
 
 enableValidation(validationConfig);

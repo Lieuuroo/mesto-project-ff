@@ -1,5 +1,3 @@
-export { createCardElement, handleDelete, handleLike };
-
 import { deleteCard, addLike, removeLike } from "./api";
 
 const cardsTemplate = document.querySelector("#cards").content;
@@ -57,7 +55,9 @@ const createCardElement = (
 };
 
 const handleDelete = (evt, cardID) => {
-  deleteCard(cardID).then(() => evt.target.closest(".cards__item").remove());
+  deleteCard(cardID)
+  .then(() => evt.target.closest(".cards__item").remove())
+  .catch((err) => console.log(err));
 };
 
 const handleLike = (evt, cardID, countLike) => {
@@ -65,8 +65,10 @@ const handleLike = (evt, cardID, countLike) => {
   const likeMethod = isLiked ? removeLike : addLike;
   likeMethod(cardID)
     .then((res) => {
-      countLike.textContent = res.likes.lenght;
+      countLike.textContent = res.likes.length;
       evt.target.classList.toggle("cards__like-button_active");
     })
     .catch((err) => console.log(err));
 };
+
+export { createCardElement, handleDelete, handleLike };
